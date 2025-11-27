@@ -1,0 +1,27 @@
+export enum CarCondition {
+  EXCELLENT = 'Excellent (Looks new, no issues)',
+  GOOD = 'Good (Minor wear, runs well)',
+  FAIR = 'Fair (Some cosmetic/mechanical issues)',
+  POOR = 'Poor (Not running / Significant damage)'
+}
+
+export interface CarFormData {
+  make: string;
+  model: string;
+  year: string;
+  mileage: string;
+  condition: CarCondition;
+  askingPrice: string;
+  pickupAddress: string;
+  contactName: string;
+  contactEmail: string;
+  contactPhone: string;
+  notes: string;
+  photos: File[];
+}
+
+export interface QuoteResponse {
+  estimatedRange: string;
+  message: string;
+  nextSteps: string;
+}
