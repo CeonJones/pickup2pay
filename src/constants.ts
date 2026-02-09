@@ -1,6 +1,6 @@
 import { CarCondition } from './types';
 
-export const BUSINESS_PHONE = "913-251-6702";
+export const BUSINESS_PHONE = "816-305-8255";
 export const BUSINESS_EMAIL = "pickup2pay@pickup2pay.com";
 
 export const CONDITION_OPTIONS = [
