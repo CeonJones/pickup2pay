@@ -48,6 +48,11 @@ const QuoteForm: React.FC = () => {
         next: "Our team will review your information and contact you within 24 hours with a guaranteed cash offer."
       });
       setIsSuccess(true);
+
+      // Google Ads conversion tracking for Contact
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', {'send_to': 'AW-17936496351/X93JCNn0kPcbEN_t5OhC'});
+      }
     } catch (error) {
       alert("Something went wrong. Please try again.");
     } finally {
