@@ -1,5 +1,5 @@
 import React from 'react';
-import { BUSINESS_PHONE, BUSINESS_EMAIL } from '../constants';
+import { BUSINESS_PHONE, BUSINESS_EMAIL, trackCallConversion } from '../constants';
 import { Car } from 'lucide-react';
 
 const Footer: React.FC = () => {
@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Contact</h3>
             <ul className="space-y-2 text-sm">
-              <li>Phone: <a href={`tel:${BUSINESS_PHONE.replace(/-/g, '')}`} className="hover:text-white transition">{BUSINESS_PHONE}</a></li>
+              <li>Phone: <button onClick={(e) => { e.preventDefault(); trackCallConversion(); }} className="hover:text-white transition">{BUSINESS_PHONE}</button></li>
               <li>Email: <a href={`mailto:${BUSINESS_EMAIL}`} className="hover:text-white transition">{BUSINESS_EMAIL}</a></li>
               <li>Hours: Mon-Fri 8am - 8pm</li>
             </ul>

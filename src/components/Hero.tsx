@@ -1,6 +1,6 @@
 import React from 'react';
 import { Phone, CheckCircle, Truck, DollarSign } from 'lucide-react';
-import { BUSINESS_PHONE } from '../constants';
+import { BUSINESS_PHONE, trackCallConversion } from '../constants';
 
 interface HeroProps {
   scrollToForm: () => void;
@@ -39,13 +39,16 @@ const Hero: React.FC<HeroProps> = ({ scrollToForm }) => {
             Get My Offer Online
           </button>
 
-          <a
-            href={`tel:${BUSINESS_PHONE.replace(/-/g, '')}`}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              trackCallConversion();
+            }}
             className="flex items-center justify-center bg-white text-slate-900 hover:bg-slate-100 font-semibold py-4 px-8 rounded-xl shadow-lg transition-colors"
           >
             <Phone size={20} className="mr-2" />
             Call {BUSINESS_PHONE}
-          </a>
+          </button>
         </div>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm font-medium text-slate-300">

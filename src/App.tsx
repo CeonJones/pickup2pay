@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import Hero from './components/Hero';
 import QuoteForm from './components/QuoteForm';
 import Footer from './components/Footer';
-import { BUSINESS_PHONE } from './constants';
+import { BUSINESS_PHONE, trackCallConversion } from './constants';
 import { Phone, Car, HelpCircle, MapPin } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -23,14 +23,17 @@ const App: React.FC = () => {
             <span className="sm:hidden">QuickCash</span>
           </div>
           <div className="flex items-center gap-4">
-            <a
-              href={`tel:${BUSINESS_PHONE.replace(/-/g, '')}`}
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                trackCallConversion();
+              }}
               className="flex items-center text-slate-700 hover:text-blue-600 font-medium transition-colors"
             >
               <Phone size={18} className="mr-2" />
               <span className="hidden sm:inline">{BUSINESS_PHONE}</span>
               <span className="sm:hidden">Call Us</span>
-            </a>
+            </button>
             <button
               onClick={scrollToForm}
               className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg text-sm font-semibold transition-colors shadow-sm"

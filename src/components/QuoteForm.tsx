@@ -9,7 +9,7 @@ import { Loader2, Send, CheckCircle2 } from 'lucide-react';
 const QuoteForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [apiResponse, setApiResponse] = useState<{message: string, range: string, next: string} | null>(null);
+  const [apiResponse, setApiResponse] = useState<{message: string, next: string} | null>(null);
 
   const [formData, setFormData] = useState<CarFormData>({
     make: '',
@@ -44,15 +44,9 @@ const QuoteForm: React.FC = () => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       setApiResponse({
         message: `Thank you for your interest in selling your ${formData.year} ${formData.make} ${formData.model}! We've received your submission.`,
-        range: "$2,000 - $5,000",
         next: "Our team will review your information and contact you within 24 hours with a guaranteed cash offer."
       });
       setIsSuccess(true);
-
-      // Google Ads conversion tracking for Contact
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'conversion', {'send_to': 'AW-17936496351/X93JCNn0kPcbEN_t5OhC'});
-      }
     } catch (error) {
       alert("Something went wrong. Please try again.");
     } finally {
@@ -70,11 +64,6 @@ const QuoteForm: React.FC = () => {
         <p className="text-slate-600 mb-8 text-lg">
           {apiResponse.message}
         </p>
-
-        <div className="bg-slate-50 rounded-xl p-6 mb-8 border border-slate-200">
-          <p className="text-sm text-slate-500 uppercase tracking-wide font-semibold mb-2">Estimated Offer Range</p>
-          <p className="text-3xl font-bold text-green-600">{apiResponse.range}</p>
-        </div>
 
         <div className="text-left bg-blue-50 p-6 rounded-xl border border-blue-100">
           <h3 className="font-semibold text-blue-900 mb-2">Next Steps:</h3>
